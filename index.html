@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emperor Data Analytics Training | Master Data Analytics & Data Science</title>
+  <meta name="description" content="Learn practical, job-ready data skills from beginner to advanced level. Become a certified data professional with Emperor Data Analytics Training." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --gold:#f5b400;--gold-light:#ffd45e;--gold-dark:#c98f00;
+      --bg:#0a0a0a;--bg2:#111111;--bg3:#161616;
+      --surface:rgba(255,255,255,0.04);--surface2:rgba(245,180,0,0.06);
+      --border:rgba(255,255,255,0.08);--border-gold:rgba(245,180,0,0.25);
+      --text:#ffffff;--text2:rgba(255,255,255,0.65);--text3:rgba(255,255,255,0.38);
+      --radius:16px;--radius-lg:24px;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:72px;background:rgba(10,10,10,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:.3s}
+    .logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;text-decoration:none;color:var(--text)}
+    .logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900;color:#000;flex-shrink:0}
+    .logo span{color:var(--gold)}
+    .nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+    .nav-links a{color:var(--text2);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.02em;padding:8px 13px;border-radius:8px;transition:.2s}
+    .nav-links a:hover{color:var(--gold);background:var(--surface2)}
+    .nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-dark))!important;color:#000!important;font-weight:700!important;padding:9px 20px!important;border-radius:10px!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+    .mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 5% 24px;z-index:999;flex-direction:column;gap:4px}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{color:var(--text2);text-decoration:none;font-size:1rem;font-weight:500;padding:12px 16px;border-radius:10px;transition:.2s}
+    .mobile-menu a:hover{color:var(--gold);background:var(--surface2)}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 65% 50%,rgba(245,180,0,.09) 0%,transparent 60%),radial-gradient(ellipse 50% 80% at 5% 15%,rgba(245,180,0,.05) 0%,transparent 50%),#0a0a0a}
+    .hero-grid{position:absolute;inset:0;z-index:0;opacity:.035;background-image:linear-gradient(rgba(245,180,0,1) 1px,transparent 1px),linear-gradient(90deg,rgba(245,180,0,1) 1px,transparent 1px);background-size:60px 60px}
+    .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1280px;margin:0 auto;width:100%}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,180,0,.1);border:1px solid rgba(245,180,0,.25);padding:6px 16px;border-radius:50px;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;animation:fadeUp .8s ease both}
+    .hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:900;line-height:1.12;letter-spacing:-.01em;animation:fadeUp .8s .1s ease both}
+    h1 .gold{color:var(--gold)}
+    h1 .line{display:block}
+    .hero-sub{margin-top:18px;font-size:1.02rem;color:var(--text2);max-width:500px;line-height:1.7;animation:fadeUp .8s .2s ease both}
+    .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;animation:fadeUp .8s .3s ease both}
+    .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#000;font-weight:700;font-size:.95rem;padding:14px 30px;border-radius:12px;border:none;cursor:pointer;text-decoration:none;transition:.2s;box-shadow:0 8px 32px rgba(245,180,0,.25);letter-spacing:.02em;display:inline-block}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(245,180,0,.35)}
+    .btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--border-gold);font-weight:600;font-size:.95rem;padding:14px 30px;border-radius:12px;cursor:pointer;text-decoration:none;transition:.2s;letter-spacing:.02em;display:inline-block}
+    .btn-outline:hover{background:var(--surface2);border-color:var(--gold);color:var(--gold)}
+    .hero-stats{display:flex;gap:32px;margin-top:40px;animation:fadeUp .8s .4s ease both;flex-wrap:wrap}
+    .hero-stat-val{font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:700;color:var(--gold)}
+    .hero-stat-lbl{font-size:.78rem;color:var(--text3);font-weight:500;margin-top:2px}
+
+    /* LAPTOP */
+    .hero-visual{position:relative;z-index:1;animation:fadeLeft .9s .2s ease both}
+    .laptop-outer{background:linear-gradient(145deg,#2a2a2a,#1a1a1a);border-radius:18px 18px 6px 6px;padding:12px 12px 4px;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06),inset 0 1px 0 rgba(255,255,255,.1);animation:float 6s ease-in-out infinite;position:relative}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    .laptop-screen{background:#0a0a0a;border-radius:8px;overflow:hidden;aspect-ratio:16/10;border:1px solid rgba(255,255,255,.05)}
+    .laptop-screen-inner{width:100%;height:100%;background:linear-gradient(135deg,#0d0d0d,#141414);display:flex;flex-direction:column;padding:14px;gap:9px}
+    .ls-topbar{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+    .ls-dot{width:9px;height:9px;border-radius:50%}
+    .ls-header{background:rgba(245,180,0,.08);border:1px solid rgba(245,180,0,.15);border-radius:8px;padding:9px 13px;display:flex;align-items:center;justify-content:space-between}
+    .ls-title{font-size:.55rem;font-weight:700;color:var(--gold);letter-spacing:.05em}
+    .ls-badge{font-size:.48rem;background:rgba(245,180,0,.2);color:var(--gold);padding:2px 7px;border-radius:20px;font-weight:700}
+    .ls-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+    .ls-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:9px}
+    .ls-card-lbl{font-size:.44rem;color:var(--text3);margin-bottom:3px;font-weight:500}
+    .ls-card-val{font-size:.82rem;font-weight:700;color:var(--text)}
+    .ls-card-val.gold{color:var(--gold)}
+    .ls-card-sub{font-size:.42rem;color:#22c55e;margin-top:2px}
+    .ls-chart{flex:1;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:9px;display:flex;flex-direction:column}
+    .ls-chart-lbl{font-size:.46rem;color:var(--text3);margin-bottom:6px;font-weight:500}
+    .ls-bars{display:flex;align-items:flex-end;gap:3px;height:38px}
+    .ls-bar{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(180deg,var(--gold),var(--gold-dark));opacity:.7}
+    .ls-bar:nth-child(2n){opacity:.4}
+    .ls-bar:last-child{opacity:.95}
+    .laptop-base{background:linear-gradient(180deg,#222,#1a1a1a);height:16px;border-radius:0 0 8px 8px;margin-top:-1px;position:relative}
+    .laptop-base::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:4px;background:rgba(255,255,255,.06);border-radius:2px}
+    .glow-orb{position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(245,180,0,.15),transparent 70%);top:-40px;right:-40px;pointer-events:none}
+
+    /* SECTIONS */
+    section{padding:96px 5%}
+    .section-inner{max-width:1280px;margin:0 auto}
+    .section-tag{display:inline-block;background:rgba(245,180,0,.1);border:1px solid rgba(245,180,0,.2);color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 15px;border-radius:50px;margin-bottom:14px}
+    .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:800;line-height:1.2;margin-bottom:14px}
+    .section-title .gold{color:var(--gold)}
+    .section-sub{color:var(--text2);font-size:1rem;max-width:560px;line-height:1.7;margin-bottom:52px}
+    .tc{text-align:center}.sc{margin-left:auto;margin-right:auto;text-align:center}
+
+    /* COURSES */
+    .courses{background:var(--bg2)}
+    .courses-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .course-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-lg);overflow:hidden;position:relative;transition:.3s}
+    .course-card:hover{transform:translateY(-6px);box-shadow:0 24px 64px rgba(0,0,0,.4)}
+    .course-card.featured{border-color:rgba(245,180,0,.3);box-shadow:0 0 40px rgba(245,180,0,.07)}
+    .course-badge{position:absolute;top:20px;right:20px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#000;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:50px}
+    .course-header{padding:30px 30px 22px;background:linear-gradient(135deg,rgba(245,180,0,.07) 0%,transparent 70%);border-bottom:1px solid var(--border)}
+    .course-icon{width:50px;height:50px;border-radius:13px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;font-size:1.35rem;margin-bottom:14px;box-shadow:0 8px 24px rgba(245,180,0,.25)}
+    .course-title{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;margin-bottom:5px}
+    .course-duration{color:var(--gold);font-size:.8rem;font-weight:600;letter-spacing:.04em}
+    .course-body{padding:26px 30px}
+    .course-desc{color:var(--text2);font-size:.9rem;line-height:1.7;margin-bottom:22px}
+    .modules-label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:11px}
+    .modules-grid{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:0}
+    .module-tag{background:rgba(245,180,0,.08);border:1px solid rgba(245,180,0,.18);color:var(--gold);font-size:.76rem;font-weight:500;padding:4px 11px;border-radius:6px}
+    .course-footer{padding:22px 30px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .course-price{font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:900;color:var(--gold)}
+    .btn-enroll{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#000;font-weight:700;font-size:.86rem;padding:12px 22px;border-radius:10px;border:none;cursor:pointer;text-decoration:none;transition:.2s;letter-spacing:.02em;white-space:nowrap;display:inline-block}
+    .btn-enroll:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,180,0,.3)}
+
+    /* WHY */
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:12px}
+    .why-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;position:relative;overflow:hidden;transition:.3s}
+    .why-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(245,180,0,.04),transparent);opacity:0;transition:.3s}
+    .why-card:hover{border-color:var(--border-gold);transform:translateY(-4px)}
+    .why-card:hover::before{opacity:1}
+    .why-icon{font-size:1.9rem;margin-bottom:14px}
+    .why-title{font-size:1rem;font-weight:700;margin-bottom:7px}
+    .why-desc{font-size:.86rem;color:var(--text2);line-height:1.65}
+
+    /* PAYMENT */
+    .payment{background:var(--bg2)}
+    .payment-box{background:linear-gradient(135deg,rgba(245,180,0,.06),rgba(245,180,0,.02));border:1px solid rgba(245,180,0,.25);border-radius:var(--radius-lg);padding:44px;max-width:620px;margin:0 auto;text-align:center}
+    .payment-icon{font-size:2.8rem;margin-bottom:18px}
+    .payment-title{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;margin-bottom:26px}
+    .payment-details{background:rgba(0,0,0,.3);border:1px solid var(--border);border-radius:12px;padding:22px;text-align:left;margin-bottom:22px}
+    .payment-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border)}
+    .payment-row:last-child{border-bottom:none}
+    .payment-key{font-size:.8rem;color:var(--text3);font-weight:500}
+    .payment-val{font-size:.92rem;font-weight:600}
+    .payment-val.gold{color:var(--gold);font-size:1.1rem;font-weight:700}
+    .payment-note{background:rgba(245,180,0,.08);border:1px solid rgba(245,180,0,.2);border-radius:10px;padding:15px;font-size:.86rem;color:var(--gold);text-align:left;line-height:1.6}
+    .payment-note strong{color:var(--gold-light)}
+
+    /* TESTIMONIALS */
+    .testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .testi-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px;transition:.3s}
+    .testi-card:hover{border-color:var(--border-gold);transform:translateY(-4px)}
+    .testi-quote{font-size:2.2rem;color:var(--gold);line-height:1;margin-bottom:14px;opacity:.6}
+    .testi-text{font-size:.92rem;color:var(--text2);line-height:1.75;margin-bottom:22px;font-style:italic}
+    .testi-author{display:flex;align-items:center;gap:13px}
+    .testi-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.05rem;color:#000;flex-shrink:0}
+    .testi-name{font-weight:700;font-size:.92rem}
+    .testi-role{font-size:.78rem;color:var(--gold);font-weight:500;margin-top:2px}
+    .testi-stars{color:var(--gold);font-size:.82rem;margin-bottom:12px}
+
+    /* REGISTER */
+    .register{background:var(--bg2)}
+    .register-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start}
+    .register-points{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:13px}
+    .register-points li{display:flex;align-items:center;gap:11px;font-size:.9rem;color:var(--text2)}
+    .register-points li::before{content:'✓';flex-shrink:0;width:22px;height:22px;border-radius:50%;background:rgba(245,180,0,.12);border:1px solid rgba(245,180,0,.25);color:var(--gold);font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+    .form-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px}
+    .form-title{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;margin-bottom:26px}
+    .form-grid{display:flex;flex-direction:column;gap:17px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-label{font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--text2)}
+    .form-input,.form-select,.form-textarea{background:rgba(255,255,255,.04);border:1.5px solid var(--border);color:var(--text);border-radius:10px;padding:11px 15px;font-size:.88rem;font-family:'Outfit',sans-serif;transition:.2s;outline:none;width:100%}
+    .form-input::placeholder,.form-textarea::placeholder{color:var(--text3)}
+    .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,180,0,.1)}
+    .form-select{appearance:none;cursor:pointer}
+    .form-select option{background:#1a1a1a}
+    .form-textarea{resize:vertical;min-height:95px}
+    .upload-zone{border:2px dashed rgba(245,180,0,.3);border-radius:12px;padding:26px;text-align:center;cursor:pointer;transition:.2s;position:relative}
+    .upload-zone:hover{border-color:var(--gold);background:rgba(245,180,0,.03)}
+    .upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+    .upload-icon{font-size:1.8rem;margin-bottom:7px}
+    .upload-text{font-size:.83rem;color:var(--text2)}
+    .upload-text span{color:var(--gold);font-weight:600}
+    .upload-sub{font-size:.73rem;color:var(--text3);margin-top:3px}
+    .upload-preview{font-size:.78rem;color:var(--gold);margin-top:7px;display:none}
+    .form-error{font-size:.73rem;color:#f87171;margin-top:2px;display:none}
+    .btn-submit{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#000;font-weight:700;font-size:.97rem;padding:15px;border-radius:12px;border:none;cursor:pointer;letter-spacing:.03em;transition:.2s;box-shadow:0 8px 32px rgba(245,180,0,.25);margin-top:4px;font-family:'Outfit',sans-serif}
+    .btn-submit:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(245,180,0,.35)}
+
+    /* TOAST */
+    .toast{position:fixed;bottom:28px;right:28px;z-index:9999;background:#111;border:1px solid rgba(34,197,94,.3);border-radius:14px;padding:16px 22px;display:flex;align-items:center;gap:13px;transform:translateX(140%);transition:transform .4s ease;box-shadow:0 20px 60px rgba(0,0,0,.5);max-width:340px}
+    .toast.show{transform:translateX(0)}
+    .toast-icon{font-size:1.4rem}
+    .toast-msg{font-size:.88rem;font-weight:500}
+    .toast-msg strong{display:block;margin-bottom:2px;color:#22c55e}
+
+    /* FOOTER */
+    footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 5% 28px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;max-width:1280px;margin:0 auto 44px}
+    .footer-brand-desc{color:var(--text2);font-size:.86rem;line-height:1.7;margin:14px 0 22px;max-width:290px}
+    .footer-socials{display:flex;gap:9px}
+    .social-btn{width:36px;height:36px;border-radius:9px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:.95rem;text-decoration:none;transition:.2s;cursor:pointer}
+    .social-btn:hover{background:rgba(245,180,0,.1);border-color:var(--border-gold);color:var(--gold)}
+    .footer-col-title{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+    .footer-links a{color:var(--text2);text-decoration:none;font-size:.86rem;transition:.2s}
+    .footer-links a:hover{color:var(--gold)}
+    .footer-contact-item{display:flex;align-items:flex-start;gap:9px;margin-bottom:11px;font-size:.86rem;color:var(--text2)}
+    .footer-contact-icon{color:var(--gold);flex-shrink:0;margin-top:1px}
+    .footer-bottom{max-width:1280px;margin:0 auto;padding-top:22px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:11px}
+    .footer-copy{font-size:.8rem;color:var(--text3)}
+    .footer-copy span{color:var(--gold)}
+
+    /* ANIMATIONS */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeLeft{from{opacity:0;transform:translateX(38px)}to{opacity:1;transform:translateX(0)}}
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* MODAL */
+    .modal-overlay{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:.3s}
+    .modal-overlay.open{opacity:1;pointer-events:all}
+    .modal{background:var(--bg3);border:1px solid var(--border-gold);border-radius:var(--radius-lg);padding:36px;max-width:500px;width:100%;transform:scale(.93);transition:.3s;max-height:90vh;overflow-y:auto}
+    .modal-overlay.open .modal{transform:scale(1)}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+    .modal-title{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700}
+    .modal-close{width:34px;height:34px;border-radius:8px;background:var(--surface);border:1px solid var(--border);color:var(--text2);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+    .modal-close:hover{background:rgba(245,180,0,.1);color:var(--gold)}
+    .modal-course-option{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:13px;cursor:pointer;transition:.2s;position:relative}
+    .modal-course-option:hover,.modal-course-option.selected{border-color:var(--gold);background:rgba(245,180,0,.05)}
+    .modal-course-option .check{position:absolute;top:17px;right:17px;width:20px;height:20px;border-radius:50%;background:rgba(245,180,0,.1);border:2px solid var(--border-gold);display:flex;align-items:center;justify-content:center;transition:.2s}
+    .modal-course-option.selected .check{background:var(--gold);border-color:var(--gold);color:#000;font-size:.7rem}
+    .modal-course-option.selected .check::after{content:'✓'}
+    .modal-course-name{font-weight:700;font-size:.97rem;margin-bottom:3px}
+    .modal-course-price{color:var(--gold);font-size:1.25rem;font-weight:700;font-family:'Playfair Display',serif}
+    .modal-course-dur{font-size:.79rem;color:var(--text3);margin-top:3px}
+    .btn-modal-cta{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#000;font-weight:700;font-size:.92rem;padding:13px;border-radius:11px;border:none;cursor:pointer;font-family:'Outfit',sans-serif;transition:.2s;margin-top:8px}
+    .btn-modal-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,180,0,.3)}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){.hero-inner{grid-template-columns:1fr;gap:36px}.hero-visual{display:none}.courses-grid{grid-template-columns:1fr}.why-grid{grid-template-columns:repeat(2,1fr)}.register-wrap{grid-template-columns:1fr;gap:36px}.footer-grid{grid-template-columns:1fr 1fr;gap:28px}}
+    @media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}section{padding:68px 5%}.testi-grid{grid-template-columns:1fr}.why-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.hero-stats{gap:18px;flex-wrap:wrap}.footer-grid{grid-template-columns:1fr}.form-card{padding:24px 18px}.payment-box{padding:28px 18px}.footer-bottom{flex-direction:column;text-align:center}.hero-btns{flex-direction:column;width:100%;max-width:300px}.btn-primary,.btn-outline{text-align:center}}
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="logo">
+    <div class="logo-icon">E</div>
+    <div>Emperor <span>Data</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#register">Register</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#register" class="nav-cta">Enroll Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMobile()">Home</a>
+  <a href="#courses" onclick="closeMobile()">Courses</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#testimonials" onclick="closeMobile()">Testimonials</a>
+  <a href="#register" onclick="closeMobile()">Register</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Nigeria's #1 Data Training Academy</div>
+      <h1>
+        <span class="line">Master <span class="gold">Data Analytics</span></span>
+        <span class="line">&amp; Data Science with</span>
+        <span class="line">Industry‑Ready Skills</span>
+      </h1>
+      <p class="hero-sub">Learn practical, job-ready data skills from beginner to advanced level and become a certified data professional.</p>
+      <div class="hero-btns">
+        <a href="#register" class="btn-primary">Register Now →</a>
+        <a href="#courses" class="btn-outline">View Courses</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-val" id="stat1">500+</div>
+          <div class="hero-stat-lbl">Students Trained</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val" id="stat2">2</div>
+          <div class="hero-stat-lbl">Expert Programs</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val" id="stat3">95%</div>
+          <div class="hero-stat-lbl">Placement Rate</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val" id="stat4">4.9★</div>
+          <div class="hero-stat-lbl">Average Rating</div>
+        </div>
+      </div>
+    </div>
+    <!-- Laptop Mockup -->
+    <div class="hero-visual">
+      <div style="position:relative">
+        <div class="glow-orb"></div>
+        <div class="laptop-outer">
+          <div class="laptop-screen">
+            <div class="laptop-screen-inner">
+              <div class="ls-topbar">
+                <div class="ls-dot" style="background:#ff5f57"></div>
+                <div class="ls-dot" style="background:#febc2e"></div>
+                <div class="ls-dot" style="background:#28c840"></div>
+              </div>
+              <div class="ls-header">
+                <span class="ls-title">📊 EMPEROR ANALYTICS DASHBOARD</span>
+                <span class="ls-badge">● LIVE</span>
+              </div>
+              <div class="ls-cards">
+                <div class="ls-card"><div class="ls-card-lbl">REVENUE</div><div class="ls-card-val gold">₦4.2M</div><div class="ls-card-sub">↑ +18.3%</div></div>
+                <div class="ls-card"><div class="ls-card-lbl">STUDENTS</div><div class="ls-card-val">524</div><div class="ls-card-sub">↑ +32%</div></div>
+                <div class="ls-card"><div class="ls-card-lbl">CERTIFIED</div><div class="ls-card-val">489</div><div class="ls-card-sub">↑ 93.3%</div></div>
+              </div>
+              <div class="ls-chart">
+                <div class="ls-chart-lbl">MONTHLY ENROLLMENT TREND</div>
+                <div class="ls-bars">
+                  <div class="ls-bar" style="height:40%"></div><div class="ls-bar" style="height:52%"></div>
+                  <div class="ls-bar" style="height:38%"></div><div class="ls-bar" style="height:68%"></div>
+                  <div class="ls-bar" style="height:58%"></div><div class="ls-bar" style="height:72%"></div>
+                  <div class="ls-bar" style="height:62%"></div><div class="ls-bar" style="height:82%"></div>
+                  <div class="ls-bar" style="height:75%"></div><div class="ls-bar" style="height:88%"></div>
+                  <div class="ls-bar" style="height:78%"></div><div class="ls-bar" style="height:100%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="laptop-base"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="courses" id="courses">
+  <div class="section-inner">
+    <div class="section-tag">Our Programs</div>
+    <h2 class="section-title">Choose Your <span class="gold">Learning Path</span></h2>
+    <p class="section-sub">Two premium programs designed to take you from beginner to certified data professional.</p>
+    <div class="courses-grid" id="pricing">
+      <div class="course-card reveal">
+        <div class="course-badge">Popular</div>
+        <div class="course-header">
+          <div class="course-icon">📊</div>
+          <div class="course-title">Data Analytics Program</div>
+          <div class="course-duration">⏱ 12 Weeks · Beginner to Intermediate</div>
+        </div>
+        <div class="course-body">
+          <p class="course-desc">Learn data cleaning, analysis, dashboard creation, business reporting, and real-world analytics projects with industry-standard tools.</p>
+          <div class="modules-label">Tools &amp; Technologies</div>
+          <div class="modules-grid">
+            <span class="module-tag">Microsoft Excel</span>
+            <span class="module-tag">Power BI</span>
+            <span class="module-tag">Google Sheets</span>
+            <span class="module-tag">SQL</span>
+          </div>
+        </div>
+        <div class="course-footer">
+          <div>
+            <div class="course-price">₦150,000</div>
+            <div style="font-size:.76rem;color:var(--text3);margin-top:2px">One-time payment</div>
+          </div>
+          <a href="#register" class="btn-enroll" onclick="selectCourse('Data Analytics Program')">Enroll Now →</a>
+        </div>
+      </div>
+      <div class="course-card featured reveal">
+        <div class="course-badge">Advanced</div>
+        <div class="course-header">
+          <div class="course-icon">🤖</div>
+          <div class="course-title">Data Science Program</div>
+          <div class="course-duration">⏱ 16 Weeks · Intermediate to Advanced</div>
+        </div>
+        <div class="course-body">
+          <p class="course-desc">Master Python for data science, machine learning fundamentals, automation, and advanced analytical workflows with cutting-edge tools.</p>
+          <div class="modules-label">Tools &amp; Technologies</div>
+          <div class="modules-grid">
+            <span class="module-tag">Python</span>
+            <span class="module-tag">Jupyter Notebook</span>
+            <span class="module-tag">Google Colab</span>
+            <span class="module-tag">SQL</span>
+          </div>
+        </div>
+        <div class="course-footer">
+          <div>
+            <div class="course-price">₦200,000</div>
+            <div style="font-size:.76rem;color:var(--text3);margin-top:2px">One-time payment</div>
+          </div>
+          <a href="#register" class="btn-enroll" onclick="selectCourse('Data Science Program')">Enroll Now →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">Why Emperor</div>
+    <h2 class="section-title tc">Why <span class="gold">Choose Us</span></h2>
+    <p class="section-sub sc">Everything you need to launch a successful data career, all in one place.</p>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-icon">🧪</div><div class="why-title">Practical Training</div><div class="why-desc">Hands-on learning with real datasets and industry tools used by top companies in Africa and beyond.</div></div>
+      <div class="why-card reveal"><div class="why-icon">🗂️</div><div class="why-title">Real Projects</div><div class="why-desc">Build a strong portfolio with capstone projects that demonstrate your skills to potential employers.</div></div>
+      <div class="why-card reveal"><div class="why-icon">🎓</div><div class="why-title">Expert Mentorship</div><div class="why-desc">Learn from experienced data professionals with years of industry and consulting experience.</div></div>
+      <div class="why-card reveal"><div class="why-icon">🚀</div><div class="why-title">Career Guidance</div><div class="why-desc">Get CV reviews, LinkedIn optimization, interview prep, and job search support after graduation.</div></div>
+      <div class="why-card reveal"><div class="why-icon">🏆</div><div class="why-title">Certification</div><div class="why-desc">Receive an industry-recognized Emperor Data Analytics certificate upon successful completion.</div></div>
+      <div class="why-card reveal"><div class="why-icon">🗓️</div><div class="why-title">Flexible Learning</div><div class="why-desc">Weekend and weekday cohorts available, with recorded sessions so you never miss a class.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+<section class="payment" id="payment-info">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:44px">
+      <div class="section-tag">How to Pay</div>
+      <h2 class="section-title tc">Simple <span class="gold">Payment Process</span></h2>
+      <p class="section-sub sc">Secure bank transfer — pay and upload proof in the registration form.</p>
+    </div>
+    <div class="payment-box reveal">
+      <div class="payment-icon">🏦</div>
+      <div class="payment-title">Bank Transfer Details</div>
+      <div class="payment-details">
+        <div class="payment-row"><span class="payment-key">Bank Name</span><span class="payment-val">UBA — United Bank for Africa</span></div>
+        <div class="payment-row"><span class="payment-key">Account Name</span><span class="payment-val">Fatolu Peter</span></div>
+        <div class="payment-row"><span class="payment-key">Account Number</span><span class="payment-val gold">2193447990</span></div>
+        <div class="payment-row"><span class="payment-key">Data Analytics Fee</span><span class="payment-val">₦150,000</span></div>
+        <div class="payment-row"><span class="payment-key">Data Science Fee</span><span class="payment-val">₦200,000</span></div>
+      </div>
+      <div class="payment-note"><strong>📤 After payment:</strong> Upload your proof of payment in the registration form below. Enrollment confirmed within 24 hours of verification.</div>
+      <a href="#register" class="btn-primary" style="margin-top:22px">Complete Registration →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="section-tag">Success Stories</div>
+    <h2 class="section-title tc">What Our <span class="gold">Students Say</span></h2>
+    <p class="section-sub sc">Real results from real students who transformed their careers with Emperor Data.</p>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">The Data Analytics program completely changed my career. Within 3 months I landed a Business Intelligence Analyst role at a top fintech. The Power BI and SQL skills I gained were exactly what employers were looking for.</p>
+        <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Adaeze Okonkwo</div><div class="testi-role">BI Analyst · Lagos FinTech</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">I had zero coding experience before joining the Data Science program. The mentors were patient, the curriculum was perfect, and the capstone project helped me land freelance contracts worth over ₦500K in my first month.</p>
+        <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Chukwuemeka Eze</div><div class="testi-role">Freelance Data Scientist</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">As a graduate without work experience, Emperor Data gave me an edge. The certification and real-world projects in my portfolio made recruiters take notice immediately. I now work remotely for a UK-based consultancy.</p>
+        <div class="testi-author"><div class="testi-avatar">F</div><div><div class="testi-name">Fatima Bello</div><div class="testi-role">Remote Data Analyst · UK Firm</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">The weekend schedule was a lifesaver — I kept my 9-to-5 while studying. The instructors are top-notch and genuinely invested in your success. Emperor Data is the best investment I've made in my professional development.</p>
+        <div class="testi-author"><div class="testi-avatar">T</div><div><div class="testi-name">Taiwo Adeyemi</div><div class="testi-role">Senior Analyst · FMCG Company</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION -->
+<section class="register" id="register">
+  <div class="section-inner">
+    <div class="register-wrap">
+      <div>
+        <div class="section-tag">Join Us Today</div>
+        <h2 class="section-title">Start Your <span class="gold">Data Journey</span></h2>
+        <p style="color:var(--text2);font-size:.92rem;line-height:1.7">Fill out the form to secure your spot in the next cohort. Limited seats available.</p>
+        <ul class="register-points">
+          <li>Instant enrollment confirmation via email</li>
+          <li>Access to student community on WhatsApp</li>
+          <li>Pre-course materials sent immediately</li>
+          <li>Flexible payment plans available on request</li>
+          <li>Industry-recognized certificate on completion</li>
+        </ul>
+        <div style="margin-top:32px;background:rgba(245,180,0,.06);border:1px solid rgba(245,180,0,.2);border-radius:13px;padding:22px">
+          <div style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:11px">Payment Reminder</div>
+          <div style="font-size:.86rem;color:var(--text2);line-height:1.65">Transfer to <strong style="color:var(--text)">UBA · Fatolu Peter · 2193447990</strong> before submitting, then upload your payment proof below.</div>
+        </div>
+      </div>
+      <div class="form-card reveal">
+        <div class="form-title">Complete Registration</div>
+        <form id="regForm" novalidate>
+          <div class="form-grid">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fullName">Full Name *</label>
+                <input class="form-input" type="text" id="fullName" placeholder="e.g. Adaeze Okonkwo" required />
+                <span class="form-error" id="err-fullName">Please enter your full name.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address *</label>
+                <input class="form-input" type="email" id="email" placeholder="you@example.com" required />
+                <span class="form-error" id="err-email">Please enter a valid email.</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number *</label>
+                <input class="form-input" type="tel" id="phone" placeholder="+234 800 000 0000" required />
+                <span class="form-error" id="err-phone">Please enter your phone number.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="course">Select Course *</label>
+                <select class="form-select form-input" id="course" required>
+                  <option value="" disabled selected>Choose a program…</option>
+                  <option value="Data Analytics Program">Data Analytics — ₦150,000</option>
+                  <option value="Data Science Program">Data Science — ₦200,000</option>
+                </select>
+                <span class="form-error" id="err-course">Please select a course.</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Payment Proof Upload *</label>
+              <div class="upload-zone">
+                <input type="file" id="paymentProof" accept="image/*,.pdf" onchange="handleUpload(this)" />
+                <div class="upload-icon">📎</div>
+                <div class="upload-text"><span>Click to upload</span> or drag &amp; drop</div>
+                <div class="upload-sub">PNG, JPG, or PDF · Max 5MB</div>
+                <div class="upload-preview" id="uploadPreview"></div>
+              </div>
+              <span class="form-error" id="err-proof">Please upload payment proof.</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Message / Additional Info</label>
+              <textarea class="form-textarea form-input" id="message" placeholder="Any questions, schedule preference, or additional info…"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Complete Registration →</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <a href="#" class="logo"><div class="logo-icon">E</div><div>Emperor <span>Data</span> Analytics</div></a>
+      <p class="footer-brand-desc">Nigeria's premier data training academy, empowering professionals with practical, job-ready analytics and data science skills.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn" title="Facebook">f</a>
+        <a href="#" class="social-btn" title="LinkedIn" style="font-size:.72rem;font-weight:700">in</a>
+        <a href="#" class="social-btn" title="YouTube">▶</a>
+        <a href="https://wa.me/2342193447990" class="social-btn" title="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Programs</div>
+      <ul class="footer-links">
+        <li><a href="#courses">Data Analytics</a></li>
+        <li><a href="#courses">Data Science</a></li>
+        <li><a href="#about">Why Emperor</a></li>
+        <li><a href="#testimonials">Success Stories</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#register">Enroll Now</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#payment-info">How to Pay</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">✉</span><a href="mailto:support@emperordataanalytics.com" style="color:var(--text2);text-decoration:none">support@emperordataanalytics.com</a></div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">💬</span><span>WhatsApp: +234 219 344 7990</span></div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">📍</span><span>Lagos, Nigeria</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 <span>Emperor Data Analytics Training</span>. All rights reserved.</div>
+    <div class="footer-copy">Crafted with <span>♥</span> for data professionals in Nigeria.</div>
+  </div>
+</footer>
+
+<!-- COURSE MODAL -->
+<div class="modal-overlay" id="courseModal">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title">Select Your <span style="color:var(--gold)">Program</span></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-course-option" id="modal-analytics" onclick="pickCourse('Data Analytics Program','modal-analytics')">
+      <div class="check"></div>
+      <div class="modal-course-name">📊 Data Analytics Program</div>
+      <div class="modal-course-price">₦150,000</div>
+      <div class="modal-course-dur">12 Weeks · Excel, Power BI, Google Sheets, SQL</div>
+    </div>
+    <div class="modal-course-option" id="modal-science" onclick="pickCourse('Data Science Program','modal-science')">
+      <div class="check"></div>
+      <div class="modal-course-name">🤖 Data Science Program</div>
+      <div class="modal-course-price">₦200,000</div>
+      <div class="modal-course-dur">16 Weeks · Python, Jupyter, Google Colab, SQL</div>
+    </div>
+    <button class="btn-modal-cta" onclick="goRegister()">Proceed to Registration →</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-icon">🎉</div>
+  <div class="toast-msg"><strong>Registration Submitted!</strong>We'll confirm your enrollment within 24 hours.</div>
+</div>
+
+<script>
+  // Mobile menu
+  document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+  function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
+
+  // Scroll reveal
+  const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*80)})},{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // File upload
+  function handleUpload(inp){const p=document.getElementById('uploadPreview');if(inp.files&&inp.files[0]){p.textContent='✓ '+inp.files[0].name;p.style.display='block'}}
+
+  // Course select
+  function selectCourse(name){document.getElementById('course').value=name}
+
+  // Modal
+  let selCourse='';
+  function closeModal(){document.getElementById('courseModal').classList.remove('open')}
+  function pickCourse(name,id){document.querySelectorAll('.modal-course-option').forEach(e=>e.classList.remove('selected'));document.getElementById(id).classList.add('selected');selCourse=name}
+  function goRegister(){if(selCourse)selectCourse(selCourse);closeModal();document.getElementById('register').scrollIntoView({behavior:'smooth'})}
+  document.getElementById('courseModal').addEventListener('click',function(e){if(e.target===this)closeModal()});
+
+  // Form
+  document.getElementById('regForm').addEventListener('submit',function(e){
+    e.preventDefault();let ok=true;
+    [{id:'fullName',err:'err-fullName',fn:v=>v.trim().length>2},
+     {id:'email',err:'err-email',fn:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)},
+     {id:'phone',err:'err-phone',fn:v=>v.trim().length>7},
+     {id:'course',err:'err-course',fn:v=>v!==''}].forEach(f=>{
+      const el=document.getElementById(f.id),er=document.getElementById(f.err);
+      if(!f.fn(el.value)){er.style.display='block';el.style.borderColor='#f87171';ok=false}
+      else{er.style.display='none';el.style.borderColor=''}
+    });
+    const pi=document.getElementById('paymentProof'),pe=document.getElementById('err-proof');
+    if(!pi.files||!pi.files.length){pe.style.display='block';ok=false}else pe.style.display='none';
+    if(ok){const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),5000);this.reset();document.getElementById('uploadPreview').style.display='none'}
+  });
+</script>
+</body>
+</html>
